@@ -1,0 +1,70 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-yellow-lightest: #FFFEF5;
+  --color-yellow-light: #FFF9E6;
+  --color-yellow-pastel: #FFEBB5;
+  --color-yellow-soft: #FFE082;
+  --color-yellow-warm: #FFD966;
+  --color-text: #8B7355;
+  
+  --font-sans: 'Quicksand', 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-serif: 'Georgia', 'Playfair Display', serif;
+}
+
+/* Custom Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes bounce-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-bounce-soft {
+  animation: bounce-soft 2s ease-in-out infinite;
+}
+
+@layer components {
+  .btn-cute {
+    @apply px-8 py-3.5 bg-yellow-warm text-white rounded-full font-medium 
+           hover:bg-yellow-soft hover:text-text transition-all duration-300 
+           shadow-lg hover:shadow-xl transform hover:scale-105;
+  }
+
+  .card-cute {
+    @apply bg-white/95 backdrop-blur-sm rounded-3xl shadow-md 
+           hover:shadow-xl transition-all duration-300 
+           border-2 border-yellow-pastel/40;
+  }
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    background: linear-gradient(135deg, #FFFEF5 0%, #FFF9E6 30%, #FFEBB5 100%);
+    min-height: 100vh;
+    color: #8B7355;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    color: #8B7355;
+    font-weight: 600;
+  }
+}
