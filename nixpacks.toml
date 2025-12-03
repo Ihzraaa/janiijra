@@ -1,11 +1,16 @@
+[providers]
+php = "8.3"
+
 [phases.setup]
-nixPkgs = ["php83", "php83Packages.composer"]
+nixPkgs = ["..."]
+
+[phases.install]
+cmds = ["composer install --optimize-autoloader --no-dev"]
 
 [phases.build]
 cmds = [
-  "composer install --optimize-autoloader --no-dev",
   "php artisan config:clear",
-  "php artisan route:clear",
+  "php artisan route:clear", 
   "php artisan view:clear"
 ]
 
